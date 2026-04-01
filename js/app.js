@@ -291,7 +291,7 @@ function renderComponents() {
     footerEl.innerHTML = `
     <footer class="bg-zinc-950 w-full py-16 px-8 border-t border-zinc-800/30">
         <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
                 <div>
                     <h4 class="text-lg font-black text-zinc-100 uppercase tracking-tighter mb-6">Odisha Bikes</h4>
                     <p class="text-zinc-500 text-sm leading-relaxed">Redefining the bike discovery journey across Odisha. Engineering precision, editorial discovery.</p>
