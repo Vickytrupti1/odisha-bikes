@@ -262,7 +262,7 @@ function renderComponents() {
             <a href="index.html" class="text-2xl font-bold tracking-tighter text-zinc-100 uppercase hover:text-secondary transition-colors">Odisha Bikes</a>
             <div class="hidden md:flex items-center gap-10">
                 <a class="${exploreClass}" href="listing.html">Explore Bikes</a>
-                <a class="text-zinc-400 hover:text-zinc-100 transition-colors" href="#">Compare</a>
+                <a class="text-zinc-400 hover:text-zinc-100 transition-colors" href="coming-soon.html">Compare</a>
             </div>
             <div class="flex items-center gap-6">
                 <div class="relative hidden lg:block">
