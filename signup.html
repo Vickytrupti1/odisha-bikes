@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Sign Up | Odisha Bikes</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-error": "#690005",
+                        "secondary-container": "#ad0224",
+                        "tertiary-fixed-dim": "#ffb780",
+                        "on-primary-fixed-variant": "#454747",
+                        "on-surface-variant": "#e4bebc",
+                        "surface-container-lowest": "#0e0e0e",
+                        "inverse-primary": "#5d5f5f",
+                        "tertiary-container": "#ca7f41",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#c6c6c7",
+                        "primary": "#c6c6c7",
+                        "tertiary-fixed": "#ffdcc4",
+                        "tertiary": "#ffb780",
+                        "on-secondary-container": "#ffb8b5",
+                        "on-tertiary-fixed": "#2f1400",
+                        "secondary": "#ffb3b1",
+                        "background": "#131313",
+                        "outline-variant": "#5b403f",
+                        "on-primary": "#2f3131",
+                        "on-tertiary-fixed-variant": "#6f3800",
+                        "on-secondary-fixed": "#410007",
+                        "on-primary-container": "#282a2a",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-variant": "#353534",
+                        "surface": "#131313",
+                        "on-tertiary-container": "#442000",
+                        "on-tertiary": "#4e2600",
+                        "secondary-fixed": "#ffdad8",
+                        "on-secondary": "#680011",
+                        "on-secondary-fixed-variant": "#92001c",
+                        "surface-container": "#201f1f",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#ffb3b1",
+                        "surface-bright": "#393939",
+                        "on-background": "#e5e2e1",
+                        "surface-container-low": "#1c1b1b",
+                        "inverse-on-surface": "#313030",
+                        "primary-container": "#909191",
+                        "outline": "#ab8987",
+                        "surface-container-highest": "#353534",
+                        "on-primary-fixed": "#1a1c1c",
+                        "on-surface": "#e5e2e1",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-dim": "#131313",
+                        "primary-fixed": "#e2e2e2",
+                        "error-container": "#93000a"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <!-- Single stylesheet for all pages -->
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body class="bg-surface-dim text-on-surface font-body selection:bg-secondary/30">
+    <main class="min-h-screen flex flex-col md:flex-row overflow-hidden">
+        <section
+            class="hidden md:flex md:w-7/12 relative bg-surface-container-lowest items-center justify-center p-12 overflow-hidden">
+            <div class="absolute inset-0 z-0 opacity-40">
+                <img class="w-full h-full object-cover"
+                    data-alt="Close-up of a high-performance motorcycle engine and fuel tank with dark metallic textures and moody dramatic side lighting"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4VKQa49DXfkM2j3dSU-l_12WvYIygs1Xd4AVl6Za26rzCPDj2yzjmIj5zgweT7UNfDq3W8TvSv7XHQzHteAMzgMHW8d03_xnM3p142JeVfuW7gOatfpHejFehMy03PcLQkwgSPafVm8eKyQw5widTpa18h2pJa5ucEvgA2SPb_r0aEHfSLdJodrVNQGx14uVKEkFAydGjIvRYqk3zLSFLV_so7TOTWe6ih3vmooRYCJLyg5VUdYRNdoNr9vCqhRdMPRJBO4wGVDY" />
+                <div class="absolute inset-0 bg-gradient-to-r from-surface-dim via-transparent to-transparent"></div>
+            </div>
+            <div class="relative z-10 max-w-xl">
+                <h1 class="font-headline text-7xl font-bold tracking-tighter text-on-surface leading-none mb-6">
+                    ENGINEERED <br /> <span class="text-secondary">FOR THRILL.</span>
+                </h1>
+                <p class="text-lg text-on-surface-variant font-light leading-relaxed max-w-md">
+                    Join the exclusive collective of riders who demand precision. Experience Odisha's premier mechanical
+                    gallery of high-performance motorcycles.
+                </p>
+                <div class="mt-12 flex gap-8 items-center">
+                    <div class="flex flex-col">
+                        <span class="text-3xl font-headline font-bold text-on-surface">500+</span>
+                        <span class="text-xs font-label uppercase tracking-widest text-outline">Bikes Curated</span>
+                    </div>
+                    <div class="w-px h-12 bg-outline-variant/30"></div>
+                    <div class="flex flex-col">
+                        <span class="text-3xl font-headline font-bold text-on-surface">12k</span>
+                        <span class="text-xs font-label uppercase tracking-widest text-outline">Active Riders</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section
+            class="flex-1 flex flex-col justify-center px-6 py-12 md:px-16 lg:px-24 bg-surface-container-low relative">
+            <div class="mb-12 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 forged-gradient rounded-lg flex items-center justify-center">
+                        <span class="material-symbols-outlined text-on-secondary-fixed text-xl"
+                            style="font-variation-settings: 'FILL' 1;">motorcycle</span>
+                    </div>
+                    <span class="font-headline font-bold text-xl tracking-tighter text-on-surface"><a href="index.html" class="hover:text-secondary transition-colors">Odisha Bikes</a></span>
+                </div>
+                <a class="text-xs font-label uppercase tracking-widest text-secondary hover:text-on-secondary-container transition-colors"
+                    href="listing.html">
+                    Back to explore
+                </a>
+            </div>
+            <div class="max-w-md w-full mx-auto">
+                <header class="mb-10">
+                    <h2 class="text-4xl font-headline font-bold tracking-tight mb-2 text-on-surface">Create Account</h2>
+                    <p class="text-on-surface-variant font-body">Step into the mechanical gallery.</p>
+                </header>
+                <!-- Error message (shown by firebase.js) -->
+                <div id="firebase-error" style="display:none;" class="mb-4 px-4 py-3 rounded-lg bg-red-900/40 border border-red-500/50 text-red-400 text-sm font-label"></div>
+                <form id="signup-form" class="space-y-6">
+                    <div class="space-y-1.5">
+                        <label class="text-xs font-label uppercase tracking-widest text-outline font-bold"
+                            for="name">Name</label>
+                        <div class="relative group">
+                            <input
+                                class="w-full bg-surface-container-highest border-none rounded-xl px-4 py-4 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-1 focus:ring-secondary/50 transition-all"
+                                id="name" placeholder="John Doe" type="text" />
+                        </div>
+                    </div>
+                    <div class="space-y-1.5">
+                        <label class="text-xs font-label uppercase tracking-widest text-outline font-bold"
+                            for="email">Email Address</label>
+                        <div class="relative group">
+                            <input
+                                class="w-full bg-surface-container-highest border-none rounded-xl px-4 py-4 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-1 focus:ring-secondary/50 transition-all"
+                                id="email" placeholder="rider@odishabikes.com" type="email" />
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="space-y-1.5">
+                            <label class="text-xs font-label uppercase tracking-widest text-outline font-bold"
+                                for="password">Password</label>
+                            <input
+                                class="w-full bg-surface-container-highest border-none rounded-xl px-4 py-4 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-1 focus:ring-secondary/50 transition-all"
+                                id="password" placeholder="••••••••" type="password" />
+                        </div>
+                        <div class="space-y-1.5">
+                            <label class="text-xs font-label uppercase tracking-widest text-outline font-bold"
+                                for="confirm_password">Confirm</label>
+                            <input
+                                class="w-full bg-surface-container-highest border-none rounded-xl px-4 py-4 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-1 focus:ring-secondary/50 transition-all"
+                                id="confirm_password" placeholder="••••••••" type="password" />
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 py-2">
+                        <input
+                            class="mt-1 rounded border-outline-variant bg-surface-container-highest text-secondary focus:ring-secondary"
+                            id="terms" type="checkbox" />
+                        <label class="text-sm text-on-surface-variant leading-tight" for="terms">
+                            I agree to the <a
+                                class="text-on-surface underline decoration-secondary/30 hover:decoration-secondary"
+                                href="#">Terms of Service</a> and <a
+                                class="text-on-surface underline decoration-secondary/30 hover:decoration-secondary"
+                                href="#">Privacy Policy</a>.
+                        </label>
+                    </div>
+                    <button
+                        class="w-full forged-gradient py-5 rounded-full text-on-secondary-fixed font-label font-extrabold uppercase tracking-[0.2em] shadow-xl shadow-secondary-container/20 active:scale-[0.98] transition-all"
+                        type="submit">
+                        Create Account
+                    </button>
+                </form>
+                <div class="mt-10 flex flex-col items-center gap-6">
+                    <div class="flex items-center gap-4 w-full">
+                        <div class="h-px flex-1 bg-outline-variant/30"></div>
+                        <span class="text-xs font-label text-outline uppercase tracking-widest">Or Sign Up With</span>
+                        <div class="h-px flex-1 bg-outline-variant/30"></div>
+                    </div>
+                    <div class="flex gap-4 w-full">
+                        <button
+                            class="flex-1 flex items-center justify-center gap-2 bg-surface-container-highest py-3 rounded-xl border border-transparent hover:border-outline-variant/50 transition-all">
+                            <span class="material-symbols-outlined text-xl">google</span>
+                            <span class="text-sm font-label font-bold">Google</span>
+                        </button>
+                        <button
+                            class="flex-1 flex items-center justify-center gap-2 bg-surface-container-highest py-3 rounded-xl border border-transparent hover:border-outline-variant/50 transition-all">
+                            <span class="material-symbols-outlined text-xl">ios</span>
+                            <span class="text-sm font-label font-bold">Apple</span>
+                        </button>
+                    </div>
+                    <p class="mt-4 text-on-surface-variant text-sm">
+                        Already have an account?
+                        <a class="text-secondary font-bold hover:underline ml-1" href="login.html">Login</a>
+                    </p>
+                </div>
+            </div>
+            <footer
+                class="mt-auto pt-12 flex justify-between items-center text-[10px] font-label uppercase tracking-widest text-outline">
+                <span>© 2024 Odisha Bikes</span>
+                <div class="flex gap-4">
+                    <a class="hover:text-on-surface transition-colors" href="#">Support</a>
+                    <a class="hover:text-on-surface transition-colors" href="#">Privacy</a>
+                </div>
+            </footer>
+        </section>
+    </main>
+    <div class="fixed top-0 right-0 w-64 h-64 forged-gradient opacity-10 blur-[120px] -z-10 pointer-events-none"></div>
+    <div
+        class="fixed bottom-0 left-0 w-96 h-96 bg-secondary-container opacity-5 blur-[150px] -z-10 pointer-events-none">
+    </div>
+    <!-- Single JS file for all pages -->
+    <!-- Firebase SDK (compat version — works without npm/webpack) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/firebase.js"></script>
+</body>
+
+</html>

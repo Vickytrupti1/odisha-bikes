@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Odisha Bikes | Kinetic Precision</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-error": "#690005",
+                        "secondary-container": "#ad0224",
+                        "tertiary-fixed-dim": "#ffb780",
+                        "on-primary-fixed-variant": "#454747",
+                        "on-surface-variant": "#e4bebc",
+                        "surface-container-lowest": "#0e0e0e",
+                        "inverse-primary": "#5d5f5f",
+                        "tertiary-container": "#ca7f41",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#c6c6c7",
+                        "primary": "#c6c6c7",
+                        "tertiary-fixed": "#ffdcc4",
+                        "tertiary": "#ffb780",
+                        "on-secondary-container": "#ffb8b5",
+                        "on-tertiary-fixed": "#2f1400",
+                        "secondary": "#ffb3b1",
+                        "background": "#131313",
+                        "outline-variant": "#5b403f",
+                        "on-primary": "#2f3131",
+                        "on-tertiary-fixed-variant": "#6f3800",
+                        "on-secondary-fixed": "#410007",
+                        "on-primary-container": "#282a2a",
+                        "primary-fixed-dim": "#c6c6c7",
+                        "surface-container-high": "#2a2a2a",
+                        "surface-variant": "#353534",
+                        "surface": "#131313",
+                        "on-tertiary-container": "#442000",
+                        "on-tertiary": "#4e2600",
+                        "secondary-fixed": "#ffdad8",
+                        "on-secondary": "#680011",
+                        "on-secondary-fixed-variant": "#92001c",
+                        "surface-container": "#201f1f",
+                        "error": "#ffb4ab",
+                        "secondary-fixed-dim": "#ffb3b1",
+                        "surface-bright": "#393939",
+                        "on-background": "#e5e2e1",
+                        "surface-container-low": "#1c1b1b",
+                        "inverse-on-surface": "#313030",
+                        "primary-container": "#909191",
+                        "outline": "#ab8987",
+                        "surface-container-highest": "#353534",
+                        "on-primary-fixed": "#1a1c1c",
+                        "on-surface": "#e5e2e1",
+                        "inverse-surface": "#e5e2e1",
+                        "surface-dim": "#131313",
+                        "primary-fixed": "#e2e2e2",
+                        "error-container": "#93000a"
+                    },
+                    fontFamily: {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Manrope"],
+                        "label": ["Manrope"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+    <!-- Single stylesheet for all pages -->
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body class="bg-background text-on-background font-body selection:bg-secondary selection:text-on-secondary">
+    <!-- Top Navigation Bar -->
+    <nav class="fixed top-0 w-full z-50 bg-zinc-900/60 backdrop-blur-xl shadow-2xl shadow-black/40">
+        <div
+            class="flex items-center justify-between px-8 py-4 max-w-screen-2xl mx-auto font-['Space_Grotesk'] tracking-tight">
+            <div class="text-2xl font-bold tracking-tighter text-zinc-100 uppercase">
+                Odisha Bikes
+            </div>
+            <div class="hidden md:flex items-center gap-10">
+                <a class="text-red-500 border-b-2 border-red-600 pb-1 font-medium transition-all" href="listing.html">Explore
+                    Bikes</a>
+                <a class="text-zinc-400 hover:text-zinc-100 transition-colors" href="#">Compare</a>
+            </div>
+            <div class="flex items-center gap-6">
+                <div class="relative hidden lg:block">
+                    <span
+                        class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500 text-sm">search</span>
+                    <input
+                        class="bg-zinc-800/50 border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-1 focus:ring-red-600 w-64 transition-all"
+                        placeholder="Search brands..." type="text" />
+                </div>
+                <!-- Auth widget: shows Login OR profile+logout depending on auth state -->
+                <div id="nav-auth" class="flex items-center gap-3">
+                    <!-- Shown when logged OUT -->
+                    <button id="nav-login-btn"
+                        onclick="window.location.href='login.html'"
+                        class="bg-secondary-container text-white px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest hover:scale-105 active:scale-95 transition-all">
+                        Login
+                    </button>
+                    <!-- Shown when logged IN (hidden by default) -->
+                    <div id="nav-profile" class="hidden items-center gap-3 relative">
+                        <div id="nav-avatar"
+                            class="w-9 h-9 rounded-full bg-secondary-container flex items-center justify-center cursor-pointer select-none text-white font-bold text-sm uppercase"
+                            onclick="document.getElementById('nav-dropdown').classList.toggle('hidden')">?</div>
+                        <span id="nav-username" class="text-zinc-200 text-sm font-semibold hidden lg:block"></span>
+                        <!-- Dropdown -->
+                        <div id="nav-dropdown" class="hidden absolute right-0 top-12 bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl py-2 w-44 z-50">
+                            <div id="nav-dropdown-name" class="px-4 py-2 text-xs text-zinc-400 border-b border-zinc-700 mb-1"></div>
+                            <button onclick="firebaseLogout()" class="w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-zinc-800 transition-colors flex items-center gap-2">
+                                <span class="material-symbols-outlined text-sm">logout</span> Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <header class="relative h-[972px] flex items-center justify-start overflow-hidden pt-20">
+        <div class="absolute inset-0 z-0">
+            <img class="w-full h-full object-cover brightness-[0.4]"
+                data-alt="Close up of a premium black sport motorcycle parked on an asphalt road with cinematic sunset lighting and dramatic shadows"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXyJHmoWwR7Qn0wkX6NK0-eaVhx5dC7DcMBegoJlvjv1uCfUe9EvD2VSWjm7BmlY3okfMsVXKs3BLMjnQC624Tww8GTkjZh84q5vYhdo1CNLUHrmC9skzCiXs4DNViHNqarx6wygDuTjTGTG277XHXQdeFGQUSqnUnG7i3PV3UlgEI1QdFr6rDWca4RU0OqjWJsaA37IqYRenVRD4aeg8rw0sFKpbQynPxjIn9ighSnd1wf4O5zhi1cs1_Ss8IbEpIkBMwMgg6C0A" />
+            <div class="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-8 w-full">
+            <div class="max-w-2xl">
+                <h1
+                    class="font-headline text-6xl md:text-8xl font-bold leading-[0.9] tracking-tighter text-on-background mb-6 text-shadow-hero">
+                    Find Your <br /><span class="text-secondary">Perfect</span> Bike
+                </h1>
+                <p class="text-xl text-zinc-400 mb-10 font-light max-w-md">
+                    Experience the raw precision of engineering. Discover the finest selection of motorcycles tailored
+                    for the modern rider.
+                </p>
+                <!-- Hero Search Integration -->
+                <div
+                    class="flex flex-col md:flex-row gap-4 max-w-xl bg-surface-container-low/80 p-2 rounded-2xl backdrop-blur-md shadow-2xl">
+                    <div class="flex-1 flex items-center px-4 gap-3 border-r border-zinc-800/50">
+                        <span class="material-symbols-outlined text-secondary">motorcycle</span>
+                        <input class="bg-transparent border-none focus:ring-0 text-zinc-100 w-full"
+                            placeholder="Bike name or brand..." type="text" />
+                    </div>
+                    <button
+                        class="bg-secondary text-on-secondary px-8 py-4 rounded-xl font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-secondary-fixed-dim transition-colors">
+                        Search <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom Hero Indicator -->
+        <div
+            class="absolute bottom-10 left-8 flex items-center gap-4 text-zinc-500 text-xs font-label uppercase tracking-[0.3em]">
+            <span>Scroll To Discover</span>
+            <div class="w-12 h-px bg-zinc-700"></div>
+        </div>
+    </header>
+    <!-- Categories Grid (Asymmetric) -->
+    <section class="py-24 px-8 max-w-7xl mx-auto">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <span
+                    class="text-secondary font-label text-xs uppercase tracking-widest font-bold">Classifications</span>
+                <h2 class="font-headline text-4xl font-bold mt-2">The Segments</h2>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <!-- Sports -->
+            <div
+                class="group relative aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-high transition-transform duration-500 hover:-translate-y-2">
+                <img class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700"
+                    data-alt="Red sport motorcycle lean on a professional racetrack with vibrant lighting and blurred background"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBl9JsZUD729nzyWVh9mHIIItH1SImSx_ia957SvZKlGacHTB9sLRHOwRxCsKqJucaVUqefzd7-h3_ZjeYTL2rgC3Q9RaJrRmKgnxFoUeKAuHk3tHe15gRsD35aAMWEJPAwDhTRjyvBgTMBQBb_mUiDyOUN5u01VyCmaP7U1Yce4U8OFIonWuax0MbO5El39G0kJHVJYIBHnw10nwVaZ0W5EPRGUw3t5SB4hi7x7P2bf97G5c_2gHv-IXvpp_t73u5_PrdMfuZrqIg" />
+                <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-80"></div>
+                <div class="absolute bottom-6 left-6">
+                    <span class="material-symbols-outlined text-secondary text-4xl mb-2" data-weight="fill">speed</span>
+                    <h3 class="font-headline text-2xl font-bold">Sports</h3>
+                    <p class="text-xs text-zinc-400 font-label uppercase tracking-wider mt-1">High Velocity</p>
+                </div>
+            </div>
+            <!-- Cruiser -->
+            <div
+                class="group relative aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-high transition-transform duration-500 hover:-translate-y-2 md:mt-12">
+                <img class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700"
+                    data-alt="Classic chrome cruiser motorcycle parked in front of a rustic garage during golden hour"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDojnvcoMPztkG2MReFzI_KBH1XprAgyUG77KtKabd673JZcoH247ITqioipyX-QuTOWAF7CkVaFd3NulChpl3gbH8rrRAtxbU4SfbRYsDRsVULT2zSimDGX-iaska5KpwveLPUMaoqFLUl6b3uQOiCkCawpHDyG0ZWshem6XLDlqmELDLdlif2Dtyqbga5Bun0Jz2fwmsGWypxifVgP1PO1oKgaa6cbgr5vbHW76Rh3nb43t5fUNAGRIbgadQzzix-ocpVGz4i5K8" />
+                <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-80"></div>
+                <div class="absolute bottom-6 left-6">
+                    <span class="material-symbols-outlined text-secondary text-4xl mb-2"
+                        data-weight="fill">distance</span>
+                    <h3 class="font-headline text-2xl font-bold">Cruiser</h3>
+                    <p class="text-xs text-zinc-400 font-label uppercase tracking-wider mt-1">Comfort &amp; Soul</p>
+                </div>
+            </div>
+            <!-- Electric -->
+            <div
+                class="group relative aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-high transition-transform duration-500 hover:-translate-y-2">
+                <img class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700"
+                    data-alt="Futuristic electric motorcycle with neon accents parked in a minimalist high-tech garage"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLTN4Eu4ilCTTS1t0d9WlzhyXPNQwNt9ZFXwVrTtNzwpdqXKQK4KfZ4KFPcckVaulfnayyuOoRq_k2gq5N6hWd0L_uw1B752lNdhwD8hml4NrLaB5P0pT_UDhGCAm10J9HYJce5IPgs9AXMC9kZ3-YS_pkedZGP-bvsENJlt2P8PgUlbYKaBR1RWK5S2oAUOrDgt4cKibg0cNHWFmrL24ptpcUd-AY-x9dhU3fLMecPMm0xlz__Wc3JkwngDzE58jRtr2fC4ibG6Y" />
+                <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-80"></div>
+                <div class="absolute bottom-6 left-6">
+                    <span class="material-symbols-outlined text-secondary text-4xl mb-2" data-weight="fill">bolt</span>
+                    <h3 class="font-headline text-2xl font-bold">Electric</h3>
+                    <p class="text-xs text-zinc-400 font-label uppercase tracking-wider mt-1">Silent Surge</p>
+                </div>
+            </div>
+            <!-- Commuter -->
+            <div
+                class="group relative aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-high transition-transform duration-500 hover:-translate-y-2 md:mt-12">
+                <img class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700"
+                    data-alt="Reliable city commuter motorcycle on a busy urban street with soft morning light"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN45shJlA-N4IGoHkKhTsbbSHJHAw9ykVn8ijanGVUAQRi9gPxoUaPvbXTcHMyaueia-H7gNbGQMDITRh1F-yoooyr_I_IIaDWEO5Cqveg_YOys-AhFojIRGHQrSWVZi_1iD_6wmgfrjykMTuVdIpVlqYVxHv1Q43h2WC7nbbM3sj6nv_cgVnCpEX31SmPUGWX92B5_Z40oNRVLsIa1GN1zHL92RZbSQgqmY1-bm-ESTn3gpyRfy3qCAzMq3xkJWbtI5DPQ6qqW50" />
+                <div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-80"></div>
+                <div class="absolute bottom-6 left-6">
+                    <span class="material-symbols-outlined text-secondary text-4xl mb-2"
+                        data-weight="fill">location_on</span>
+                    <h3 class="font-headline text-2xl font-bold">Commuter</h3>
+                    <p class="text-xs text-zinc-400 font-label uppercase tracking-wider mt-1">Urban Efficiency</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Trending Section (Bento Inspired) -->
+    <section class="py-24 bg-surface-container-low">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-16">
+                <h2 class="font-headline text-5xl font-extrabold tracking-tighter">
+                    Trending <span class="text-secondary">Picks</span>
+                </h2>
+                <!-- Slider navigation buttons — IDs are used by js/index.js -->
+                <div class="flex gap-2">
+                    <button id="trending-prev"
+                        class="w-12 h-12 rounded-full border border-zinc-700 flex items-center justify-center hover:bg-zinc-800 transition-colors"
+                        aria-label="Previous bikes">
+                        <span class="material-symbols-outlined">chevron_left</span>
+                    </button>
+                    <button id="trending-next"
+                        class="w-12 h-12 rounded-full bg-secondary text-on-secondary flex items-center justify-center hover:opacity-90 transition-colors"
+                        aria-label="Next bikes">
+                        <span class="material-symbols-outlined">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Outer wrapper masks off-screen cards (overflow hidden via CSS) -->
+            <div id="trending-outer">
+                <!-- Scrollable track — transform is animated by js/index.js -->
+                <div id="trending-track">
+
+                    <!-- Card 1: KTM Duke 390 -->
+                    <div class="group bg-surface rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-black/60 border border-zinc-800/30 bike-card">
+                        <div class="relative h-64 overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                data-alt="KTM Duke orange and white motorcycle detail shot focusing on the frame and engine"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoad7qf0GtzDIdI5OfvuZRFXs_HQTihlPhLTxlTAPEkvjDjQDm10o06Scxd_nijS7pvSPga5c3IHL8AhrMeCeG6icsIoBtJUdrI5BA2XrVvLeJL_nFya3EKrZoX0ksj814bXkC10qpGwirbhH_EKBIgmxp92OOirzJgJm4MggiJOnv6pspJkhw3pawpZXDtSrJm7YwIoxdRiWEkGy3vunggn5WaENs89i2Jd8akOJBeQoJf45lDF4o5ahY1DEeP3EJtgqAnqs-kZY" />
+                            <div class="absolute top-4 left-4 bg-red-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Hot Seller</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <p class="text-zinc-500 text-xs font-bold uppercase tracking-wider mb-1">KTM</p>
+                                    <h3 class="text-2xl font-headline font-bold">Duke 390</h3>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-secondary font-bold text-lg">₹ 3.10L</p>
+                                    <p class="text-zinc-600 text-[10px] uppercase">Ex-Showroom</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 py-4 border-y border-zinc-800/50 mb-6">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-zinc-500 text-sm">speed</span>
+                                    <span class="text-sm text-zinc-300">28 kmpl</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-zinc-500 text-sm">settings_input_component</span>
+                                    <span class="text-sm text-zinc-300">373cc</span>
+                                </div>
+                            </div>
+                            <button data-bike-id="ktm-duke-390" class="view-details-btn w-full py-3 rounded-xl border border-secondary text-secondary font-bold uppercase text-xs tracking-widest hover:bg-secondary hover:text-on-secondary transition-all">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Bajaj Pulsar RS 200 -->
+                    <div class="group bg-surface rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-black/60 border border-zinc-800/30 bike-card">
+                        <div class="relative h-64 overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                data-alt="Aggressive styling of a Pulsar RS 200 black motorcycle in a low angle shot"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC29lWhMcyTw_JSvoPmguqKk9wCK4_qMIBboFdirT6iCZQBVtSiHPgui8nRlOwG3sDCxo3BF1nwNWN4OBFeEfvaPMh5RM89eYPjyG_LNddA6kbjUkZOkuLYBsVYfsLDsjWsbjIOyFKg18XxZ9FnEZqGYFNwRjeSCE97yMQFW74HHsRz1sF8hYWTmhw_O98BTvmKVTuul-7RLRfkCIAhXDAhr3aPsW9-71yFAvyqLuv9c60kq0FYuFlCOfNzlsx_jvmc_-IIidRhupw" />
+                            <div class="absolute top-4 left-4 bg-zinc-800 text-zinc-300 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">New Arrival</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <p class="text-zinc-500 text-xs font-bold uppercase tracking-wider mb-1">Bajaj</p>
+                                    <h3 class="text-2xl font-headline font-bold">Pulsar RS 200</h3>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-secondary font-bold text-lg">₹ 1.72L</p>
+                                    <p class="text-zinc-600 text-[10px] uppercase">Ex-Showroom</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 py-4 border-y border-zinc-800/50 mb-6">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-zinc-500 text-sm">speed</span>
+                                    <span class="text-sm text-zinc-300">35 kmpl</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-zinc-500 text-sm">settings_input_component</span>
+                                    <span class="text-sm text-zinc-300">199cc</span>
+                                </div>
+                            </div>
+                            <button data-bike-id="bajaj-pulsar-rs200" class="view-details-btn w-full py-3 rounded-xl border border-secondary text-secondary font-bold uppercase text-xs tracking-widest hover:bg-secondary hover:text-on-secondary transition-all">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Royal Enfield Bullet 350 -->
+                    <div class="group bg-surface rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-black/60 border border-zinc-800/30 bike-card">
+                        <div class="relative h-64 overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                data-alt="Royal Enfield Bullet 350 classic motorcycle parked in a foggy morning setting"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWgZDdvOGwbwto5m3nKWmz9KaJLCZ6xPt9edYXaC3-WgBifHwwkpxPVsAle5yvduCJJ5rhPL30W28eJEKfyNyclRDeIakyOg32qs5hjdXNMy3WPU03l7huvnB-_6WiL8DfKBEU9KPyEMIpfyGRwUBWIvccqt9Oy6LEBd-k1U-KEpvhrok-JDY5CQLOldk-Wv6ml4P_vVk_97-cs9SqVwSav697Dz88cJwBpzVi_v7QDses116UMpb-ft-d3DXOo3_j2PWK8cb5VMs" />
+                            <div class="absolute top-4 left-4 bg-zinc-700 text-zinc-200 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Classic</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <p class="text-zinc-500 text-xs font-bold uppercase tracking-wider mb-1">Royal Enfield</p>
+                                    <h3 class="text-2xl font-headline font-bold">Bullet 350</h3>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-secondary font-bold text-lg">₹ 1.95L</p>
+                                    <p class="text-zinc-600 text-[10px] uppercase">Ex-Showroom</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 py-4 border-y border-zinc-800/50 mb-6">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-zinc-500 text-sm">speed</span>
+                                    <span class="text-sm text-zinc-300">38 kmpl</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-zinc-500 text-sm">settings_input_component</span>
+                                    <span class="text-sm text-zinc-300">349cc</span>
+                                </div>
+                            </div>
+                            <button data-bike-id="royal-enfield-bullet-350" class="view-details-btn w-full py-3 rounded-xl border border-secondary text-secondary font-bold uppercase text-xs tracking-widest hover:bg-secondary hover:text-on-secondary transition-all">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Yamaha R15 V4 -->
+                    <div class="group bg-surface rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-black/60 border border-zinc-800/30 bike-card">
+                        <div class="relative h-64 overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                data-alt="Yamaha R15 V4 blue sport motorcycle on a racetrack with aerodynamic fairing"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDECIWcjXbv27etFkvxM4MXu3rvC7ObqEZ35McX08am-UjOmkXa6gzTz00vJxVk3EOf2dlywQ_h8z7URLRHec0oxtqM3nTeRQKGOcQ-D39ClEyI7PoOO0u-wiWt51mjmy-mOa8S093BuMH9upj2axwfw1nV8BMQ1FVobnHk31fXfhK8TA4_IK-o9fJ_Sv7cdaTfOjf4Go34IkGsccjfixHloLVJ7kLs0WoWH6qvqfVCe66YUmksMd0DcI3WJCy5goakbf_oc7KSji4" />
+                            <div class="absolute top-4 left-4 bg-blue-700 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Race Ready</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <p class="text-zinc-500 text-xs font-bold uppercase tracking-wider mb-1">Yamaha</p>
+                                    <h3 class="text-2xl font-headline font-bold">R15 V4</h3>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-secondary font-bold text-lg">₹ 1.85L</p>
+                                    <p class="text-zinc-600 text-[10px] uppercase">Ex-Showroom</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 py-4 border-y border-zinc-800/50 mb-6">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-zinc-500 text-sm">speed</span>
+                                    <span class="text-sm text-zinc-300">45 kmpl</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-zinc-500 text-sm">settings_input_component</span>
+                                    <span class="text-sm text-zinc-300">155cc</span>
+                                </div>
+                            </div>
+                            <button data-bike-id="yamaha-r15-v4" class="view-details-btn w-full py-3 rounded-xl border border-secondary text-secondary font-bold uppercase text-xs tracking-widest hover:bg-secondary hover:text-on-secondary transition-all">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Honda CB300R -->
+                    <div class="group bg-surface rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-black/60 border border-zinc-800/30 bike-card">
+                        <div class="relative h-64 overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                data-alt="Honda CB300R naked streetfighter motorcycle with minimalist matte design"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6AtiI5x85F8LUgaPleuQJ8avqRksljvL77zaQtbPaOjqPC4fzIdq8jhGKo0P_8WTqs2Dw584cnSOP67a4BWEkMq9ni2_Vr6mZYPkch0pv1Wcw0iXkI1DopilELIt9of2-15RtVWWoF_xh4PYHEfk3bWwMYsBEMTWHG64z1fiZGDDQHaEhVbTnDVkOLI5mg8VrKjKgTb4DhtYE7UWR2dC6ycptBUiSdTGi4F39bh4oIwJ1c1Rud-ScAZrjhcGd1ekUL4U1E_dqBN0" />
+                            <div class="absolute top-4 left-4 bg-zinc-100 text-zinc-900 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Premium</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <p class="text-zinc-500 text-xs font-bold uppercase tracking-wider mb-1">Honda</p>
+                                    <h3 class="text-2xl font-headline font-bold">CB300R</h3>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-secondary font-bold text-lg">₹ 2.95L</p>
+                                    <p class="text-zinc-600 text-[10px] uppercase">Ex-Showroom</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 py-4 border-y border-zinc-800/50 mb-6">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-zinc-500 text-sm">speed</span>
+                                    <span class="text-sm text-zinc-300">38 kmpl</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-zinc-500 text-sm">settings_input_component</span>
+                                    <span class="text-sm text-zinc-300">293cc</span>
+                                </div>
+                            </div>
+                            <button data-bike-id="honda-cb300r" class="view-details-btn w-full py-3 rounded-xl border border-secondary text-secondary font-bold uppercase text-xs tracking-widest hover:bg-secondary hover:text-on-secondary transition-all">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: TVS Apache RR 310 -->
+                    <div class="group bg-surface rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-black/60 border border-zinc-800/30 bike-card">
+                        <div class="relative h-64 overflow-hidden">
+                            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                data-alt="TVS Apache RR 310 aggressive sporty motorcycle with full fairing on a mountain road"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9LwAD6UnhEt7nGt7wQlPMLeZCjFdBTxN4lhPS0KDosPX6bL9HXNAepdY3TF-MXBd3aT_JejY-IeEbVyHqac0txj5yEasT-7ae9RMPjosDzxluBQlL4FSt0pra3OhAlCCBYar2BxA7pvk4o-2lig9Cbyb9-yx09uZq9W6ZXiSVDrI8gL3g3PHT5AFsenikIERRegdHw_KePAsMlCnGC54dP7R5olszvVp93HoHxmqE26nfaAD6sqAu-ySeKGtln-k_3Q6AdaM4lxE" />
+                            <div class="absolute top-4 left-4 bg-orange-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Track Ready</div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <p class="text-zinc-500 text-xs font-bold uppercase tracking-wider mb-1">TVS</p>
+                                    <h3 class="text-2xl font-headline font-bold">Apache RR 310</h3>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-secondary font-bold text-lg">₹ 2.75L</p>
+                                    <p class="text-zinc-600 text-[10px] uppercase">Ex-Showroom</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 py-4 border-y border-zinc-800/50 mb-6">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-zinc-500 text-sm">speed</span>
+                                    <span class="text-sm text-zinc-300">40 kmpl</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-zinc-500 text-sm">settings_input_component</span>
+                                    <span class="text-sm text-zinc-300">312cc</span>
+                                </div>
+                            </div>
+                            <button data-bike-id="tvs-apache-rr310" class="view-details-btn w-full py-3 rounded-xl border border-secondary text-secondary font-bold uppercase text-xs tracking-widest hover:bg-secondary hover:text-on-secondary transition-all">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+
+                </div><!-- end #trending-track -->
+            </div><!-- end #trending-outer -->
+        </div>
+    </section>
+    <!-- Side Filter Trigger (Simulated for UX) -->
+    <div class="fixed left-0 top-1/2 -translate-y-1/2 z-40 hidden lg:block">
+        <div class="flex flex-col gap-4 p-4 bg-zinc-900 border border-l-0 border-zinc-800 rounded-r-2xl shadow-xl">
+            <span class="material-symbols-outlined text-zinc-500 hover:text-secondary cursor-pointer"
+                title="Price Range">payments</span>
+            <span class="material-symbols-outlined text-zinc-500 hover:text-secondary cursor-pointer"
+                title="Brand">stars</span>
+            <span class="material-symbols-outlined text-zinc-500 hover:text-secondary cursor-pointer"
+                title="Mileage">speed</span>
+            <span class="material-symbols-outlined text-zinc-500 hover:text-secondary cursor-pointer"
+                title="Fuel Type">ev_station</span>
+        </div>
+    </div>
+    <!-- Comparison Section -->
+    <section class="py-32 px-8 overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <span class="text-secondary font-label text-xs uppercase tracking-[0.4em] font-bold">Unmatched
+                    Comparison</span>
+                <h2 class="font-headline text-5xl font-bold mt-4 leading-tight">Can't decide on <br />your next ride?
+                </h2>
+                <p class="text-zinc-400 mt-6 text-lg max-w-lg">
+                    Our precision comparison tool puts side-by-side specs, performance metrics, and real-world owner
+                    reviews at your fingertips.
+                </p>
+                <div class="flex flex-col gap-4 mt-10">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+                            <span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+                        </div>
+                        <span class="font-medium">Compare Engine &amp; Performance</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+                            <span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+                        </div>
+                        <span class="font-medium">Analysis of On-Road Pricing</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+                            <span class="material-symbols-outlined text-secondary text-lg">check_circle</span>
+                        </div>
+                        <span class="font-medium">Mileage &amp; Maintenance Costs</span>
+                    </div>
+                </div>
+                <button
+                    class="mt-12 bg-zinc-100 text-zinc-900 px-10 py-4 rounded-full font-black uppercase text-xs tracking-widest hover:bg-secondary hover:text-white transition-all active:scale-95">
+                    Launch Compare Tool
+                </button>
+            </div>
+            <div class="relative">
+                <div class="absolute -right-20 -top-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
+                <div class="glass-card p-4 rounded-[2rem] relative z-10">
+                    <img class="rounded-[1.5rem] w-full shadow-2xl"
+                        data-alt="Side profile comparison of two premium motorcycles with clean white backgrounds for technical focus"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKaC4fFhqkHab1uXFnrsKRasxEcMBGxMqVV9mtMiNRj8kJkcTfFXCuAgZvJhsunJ-TzlgA7Wj0mHNPi5zfIgWspgrkxmM_oksDG7bIVdKJj_disK6OPjvGMG1ZUCUihMzkOfjjt9yp8MxhEQwU69qRvxbSmIqtbDlaruMt_UHz4dA7DFOtVAgnyxsgrnc87Mj31aYyxVdv6QOk7s9l9N3p1bHB-8hEK007NV1GsVlQsPhjqGgFtAhRzD-cuGy7ec2-xCeKHJ1vhTE" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-zinc-950 w-full py-16 px-8 border-t border-zinc-800/30">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <h4 class="text-lg font-black text-zinc-100 uppercase tracking-tighter mb-6">Odisha Bikes</h4>
+                    <p class="text-zinc-500 text-sm leading-relaxed">
+                        Redefining the bike discovery journey across Odisha. Engineering precision, editorial discovery.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="font-['Manrope'] text-xs uppercase tracking-widest text-secondary font-bold mb-6">Explore
+                    </h5>
+                    <ul class="flex flex-col gap-4 text-xs font-['Manrope'] tracking-widest uppercase">
+                        <li><a class="text-zinc-500 hover:text-red-500 transition-colors" href="listing.html">Popular Bikes</a>
+                        </li>
+                        <li><a class="text-zinc-500 hover:text-red-500 transition-colors" href="listing.html">Electric Hub</a></li>
+                        <li><a class="text-zinc-500 hover:text-red-500 transition-colors" href="#">Comparison Tool</a>
+                        </li>
+                        <li><a class="text-zinc-500 hover:text-red-500 transition-colors" href="#">Dealer Locator</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-['Manrope'] text-xs uppercase tracking-widest text-secondary font-bold mb-6">Company
+                    </h5>
+                    <ul class="flex flex-col gap-4 text-xs font-['Manrope'] tracking-widest uppercase">
+                        <li><a class="text-zinc-500 hover:text-red-500 transition-colors" href="#">About Us</a></li>
+                        <li><a class="text-zinc-500 hover:text-red-500 transition-colors" href="#">Contact</a></li>
+                        <li><a class="text-zinc-500 hover:text-red-500 transition-colors" href="#">Terms of Service</a>
+                        </li>
+                        <li><a class="text-zinc-500 hover:text-red-500 transition-colors" href="#">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-['Manrope'] text-xs uppercase tracking-widest text-secondary font-bold mb-6">
+                        Newsletter</h5>
+                    <div class="flex bg-zinc-900 rounded-lg overflow-hidden border border-zinc-800">
+                        <input class="bg-transparent border-none text-xs px-4 w-full focus:ring-0"
+                            placeholder="Your email" type="email" />
+                        <button class="bg-zinc-800 px-4 py-2 border-l border-zinc-700">
+                            <span class="material-symbols-outlined text-sm text-zinc-100">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-zinc-900/50 gap-6">
+                <p class="font-['Manrope'] text-xs uppercase tracking-widest text-zinc-500">
+                    © 2024 Odisha Bikes. Kinetic Precision.
+                </p>
+                <div class="flex gap-8">
+                    <span
+                        class="material-symbols-outlined text-zinc-500 hover:text-zinc-100 cursor-pointer text-lg">public</span>
+                    <span
+                        class="material-symbols-outlined text-zinc-500 hover:text-zinc-100 cursor-pointer text-lg">mail</span>
+                    <span
+                        class="material-symbols-outlined text-zinc-500 hover:text-zinc-100 cursor-pointer text-lg">share</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+                    <!-- Single JS file for all pages -->
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/firebase.js"></script>
+</body>
+
+</html>

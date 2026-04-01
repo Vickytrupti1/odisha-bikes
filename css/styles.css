@@ -1,0 +1,104 @@
+/* =============================================================
+   STYLES.CSS — Odisha Bikes
+   One CSS file for all pages of the project.
+   ============================================================= */
+
+/* ── Material Symbols icon rendering ──────────────────────── */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ── Nav bar background transitions ───────────────────────── */
+.tonal-transition {
+    transition: background-color 0.3s ease;
+}
+
+/* ── Generic surface-level transitions ────────────────────── */
+.surface-shift {
+    transition: all 0.3s ease;
+}
+
+/* ── Frosted glass card (home comparison section) ─────────── */
+.glass-card {
+    background: rgba(53, 53, 52, 0.4);
+    backdrop-filter: blur(12px);
+}
+
+/* ── Frosted glass overlay (signup form, details nav) ─────── */
+.glass-effect {
+    background: rgba(53, 53, 52, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+/* ── Login form glass panel ───────────────────────────────── */
+.glass-panel {
+    background: rgba(53, 53, 52, 0.4);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(91, 64, 63, 0.15);
+}
+
+/* ── Hero text shadow (home page h1) ──────────────────────── */
+.text-shadow-hero {
+    text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+}
+
+/* ── Login page submit button gradient ────────────────────── */
+.kinetic-gradient {
+    background: linear-gradient(135deg, #ffb3b1 0%, #ad0224 100%);
+}
+
+/* ── Signup page submit button gradient ───────────────────── */
+.forged-gradient {
+    background: linear-gradient(135deg, #ffb3b1 0%, #ad0224 100%);
+}
+
+/* ── Signup page diagonal clip on left photo panel ────────── */
+.asymmetric-bleed {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);
+}
+
+/* ── Spinning animation (login page decorative gear icon) ─── */
+@keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+    animation: spin-slow 8s linear infinite;
+}
+
+/* ── Custom scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar           { width: 6px; }
+::-webkit-scrollbar-track     { background: #131313; }
+::-webkit-scrollbar-thumb     { background: #353534; border-radius: 10px; }
+
+/* =============================================================
+   TRENDING PICKS SLIDER  (home page — index.html)
+   Uses #trending-outer, #trending-track, and .bike-card.
+   ============================================================= */
+
+/* Outer wrapper: hides cards that are off-screen.
+   width:100% gives it a concrete block width so --card-w calc is reliable. */
+#trending-outer {
+    overflow: hidden;
+    width: 100%;
+}
+
+/* The scrollable track — JS moves it with translateX */
+#trending-track {
+    display: flex;
+    flex-direction: row;          /* always horizontal */
+    flex-wrap: nowrap;            /* cards must never wrap */
+    gap: 2rem;
+    transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+}
+
+/* --card-w is written onto #trending-outer by JS and read here.
+   280px fallback prevents invisible cards if JS hasn't run yet. */
+#trending-track > .bike-card {
+    flex-shrink: 0;
+    flex-grow: 0;
+    width: var(--card-w, 280px);
+}
