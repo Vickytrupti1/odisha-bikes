@@ -85,45 +85,8 @@
 </head>
 
 <body class="bg-background text-on-background font-body selection:bg-secondary/30">
-    <!-- TopNavBar -->
-    <nav class="fixed top-0 w-full z-50 bg-zinc-900/60 backdrop-blur-xl shadow-2xl shadow-black/40 tonal-transition">
-        <div
-            class="flex items-center justify-between px-8 py-4 max-w-screen-2xl mx-auto font-['Space_Grotesk'] tracking-tight">
-            <div class="text-2xl font-bold tracking-tighter text-zinc-100 uppercase"><a href="index.html" class="hover:text-secondary transition-colors">Odisha Bikes</a></div>
-            <div class="hidden md:flex items-center gap-8">
-                <a class="text-red-500 border-b-2 border-red-600 pb-1" href="listing.html">Explore Bikes</a>
-                <a class="text-zinc-400 hover:text-zinc-100 transition-colors" href="#">Compare</a>
-            </div>
-            <div class="flex items-center gap-6">
-                <div class="relative hidden lg:block">
-                    <input
-                        class="bg-surface-container-high border-none rounded-full px-6 py-2 text-sm focus:ring-2 focus:ring-secondary/50 w-64 text-on-surface"
-                        placeholder="Search models..." type="text" />
-                    <span class="material-symbols-outlined absolute right-4 top-2 text-zinc-500 text-lg">search</span>
-                </div>
-                <!-- Auth widget -->
-                <div id="nav-auth" class="flex items-center gap-3">
-                    <button id="nav-login-btn"
-                        onclick="window.location.href='login.html'"
-                        class="bg-secondary-container text-white px-6 py-2 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-red-700 transition-all active:scale-95 duration-200">
-                        Login
-                    </button>
-                    <div id="nav-profile" class="hidden items-center gap-3 relative">
-                        <div id="nav-avatar"
-                            class="w-9 h-9 rounded-full bg-secondary-container flex items-center justify-center cursor-pointer select-none text-white font-bold text-sm uppercase"
-                            onclick="document.getElementById('nav-dropdown').classList.toggle('hidden')">?</div>
-                        <span id="nav-username" class="text-zinc-200 text-sm font-semibold hidden lg:block"></span>
-                        <div id="nav-dropdown" class="hidden absolute right-0 top-12 bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl py-2 w-44 z-50">
-                            <div id="nav-dropdown-name" class="px-4 py-2 text-xs text-zinc-400 border-b border-zinc-700 mb-1"></div>
-                            <button onclick="firebaseLogout()" class="w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-zinc-800 transition-colors flex items-center gap-2">
-                                <span class="material-symbols-outlined text-sm">logout</span> Logout
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <!-- Navbar injected by js/app.js -->
+    <div id="main-nav"></div>
     <main class="pt-24 flex min-h-screen max-w-screen-2xl mx-auto">
         <!-- SideNavBar (Filters) -->
         <aside
@@ -385,43 +348,8 @@
             </div>
         </section>
     </main>
-    <!-- Footer -->
-    <footer class="bg-zinc-950 w-full py-12 px-8 border-t border-zinc-800/30 mt-24">
-        <div
-            class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-7xl mx-auto font-['Manrope'] text-xs uppercase tracking-widest">
-            <div class="space-y-4">
-                <div class="text-lg font-black text-zinc-100">Odisha Bikes</div>
-                <p class="text-zinc-600 normal-case tracking-normal">Leading the motorcycle revolution across Eastern
-                    India with precision and passion.</p>
-            </div>
-            <div class="flex flex-col gap-4">
-                <span class="text-red-600 font-bold">Showroom</span>
-                <a class="text-zinc-500 hover:text-red-500 transition-colors" href="#">About</a>
-                <a class="text-zinc-500 hover:text-red-500 transition-colors" href="#">Contact</a>
-            </div>
-            <div class="flex flex-col gap-4">
-                <span class="text-red-600 font-bold">Legal</span>
-                <a class="text-zinc-500 hover:text-red-500 transition-colors" href="#">Terms</a>
-                <a class="text-zinc-500 hover:text-red-500 transition-colors" href="#">Privacy</a>
-            </div>
-            <div class="flex flex-col gap-4">
-                <span class="text-red-600 font-bold">Follow Us</span>
-                <div class="flex gap-4">
-                    <span
-                        class="material-symbols-outlined text-zinc-500 cursor-pointer hover:text-red-500 transition-colors">public</span>
-                    <span
-                        class="material-symbols-outlined text-zinc-500 cursor-pointer hover:text-red-500 transition-colors">share</span>
-                    <span
-                        class="material-symbols-outlined text-zinc-500 cursor-pointer hover:text-red-500 transition-colors">mail</span>
-                </div>
-            </div>
-        </div>
-        <div
-            class="max-w-7xl mx-auto mt-12 pt-8 border-t border-zinc-900 flex justify-between items-center text-zinc-600">
-            <span>© 2024 Odisha Bikes. Kinetic Precision.</span>
-            <span class="text-[10px]">Handcrafted for the Road.</span>
-        </div>
-    </footer>
+    <!-- Footer injected by js/app.js -->
+    <div id="main-footer" class="mt-24"></div>
     <!-- Single JS file for all pages -->
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>

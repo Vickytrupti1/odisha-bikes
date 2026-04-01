@@ -86,48 +86,8 @@
 </head>
 
 <body class="bg-background text-on-surface font-body selection:bg-secondary-container selection:text-white">
-    <!-- TopNavBar -->
-    <nav class="fixed top-0 w-full z-50 bg-zinc-900/60 backdrop-blur-xl shadow-2xl shadow-black/40">
-        <div class="flex items-center justify-between px-8 py-4 max-w-screen-2xl mx-auto">
-            <a href="index.html" class="text-2xl font-bold tracking-tighter text-zinc-100 font-['Space_Grotesk'] hover:text-secondary transition-colors">Odisha Bikes</a>
-            <div class="hidden md:flex items-center gap-8">
-                <a class="text-zinc-400 hover:text-zinc-100 transition-colors font-['Space_Grotesk'] tracking-tight"
-                    href="listing.html">Explore Bikes</a>
-                <a class="text-zinc-400 hover:text-zinc-100 transition-colors font-['Space_Grotesk'] tracking-tight"
-                    href="#">Compare</a>
-            </div>
-            <div class="flex items-center gap-6">
-                <div class="relative hidden lg:block">
-                    <span
-                        class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400 text-sm">search</span>
-                    <input
-                        class="bg-zinc-800/50 border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-1 focus:ring-red-600 w-64"
-                        placeholder="Search models..." type="text" />
-                </div>
-                <!-- Auth widget -->
-                <div id="nav-auth" class="flex items-center gap-3">
-                    <button id="nav-login-btn"
-                        onclick="window.location.href='login.html'"
-                        class="bg-secondary-container text-white px-6 py-2 rounded-full font-bold text-sm tracking-widest uppercase hover:brightness-110 active:scale-95 duration-200 transition-all">
-                        Login
-                    </button>
-                    <div id="nav-profile" class="hidden items-center gap-3 relative">
-                        <div id="nav-avatar"
-                            class="w-9 h-9 rounded-full bg-secondary-container flex items-center justify-center cursor-pointer select-none text-white font-bold text-sm uppercase"
-                            onclick="document.getElementById('nav-dropdown').classList.toggle('hidden')">?</div>
-                        <span id="nav-username" class="text-zinc-200 text-sm font-semibold hidden lg:block"></span>
-                        <div id="nav-dropdown" class="hidden absolute right-0 top-12 bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl py-2 w-44 z-50">
-                            <div id="nav-dropdown-name" class="px-4 py-2 text-xs text-zinc-400 border-b border-zinc-700 mb-1"></div>
-                            <button onclick="firebaseLogout()" class="w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-zinc-800 transition-colors flex items-center gap-2">
-                                <span class="material-symbols-outlined text-sm">logout</span> Logout
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <!-- Navbar injected by js/app.js -->
+    <div id="main-nav"></div>
     <main class="pt-20">
         <!-- Hero Section -->
         <section class="relative w-full h-[870px] overflow-hidden flex items-end">
@@ -314,49 +274,8 @@
             </div>
         </section>
     </main>
-    <!-- Footer -->
-    <footer class="bg-zinc-950 w-full py-12 px-8 border-t border-zinc-800/30">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-7xl mx-auto">
-            <div class="col-span-1 md:col-span-1">
-                <div class="text-lg font-black text-zinc-100 mb-6 font-['Space_Grotesk']">ODISHA BIKES</div>
-                <p class="text-zinc-500 text-xs uppercase tracking-widest leading-relaxed">The region's most exclusive
-                    destination for high-performance motorcycling and mechanical art.</p>
-            </div>
-            <div>
-                <h4 class="text-zinc-100 font-bold mb-6 text-sm">Quick Links</h4>
-                <ul class="space-y-4">
-                    <li><a class="text-zinc-500 hover:text-red-500 transition-colors text-xs uppercase tracking-widest font-['Manrope']"
-                            href="#">About</a></li>
-                    <li><a class="text-zinc-500 hover:text-red-500 transition-colors text-xs uppercase tracking-widest font-['Manrope']"
-                            href="#">Contact</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-zinc-100 font-bold mb-6 text-sm">Legal</h4>
-                <ul class="space-y-4">
-                    <li><a class="text-zinc-500 hover:text-red-500 transition-colors text-xs uppercase tracking-widest font-['Manrope']"
-                            href="#">Terms</a></li>
-                    <li><a class="text-zinc-500 hover:text-red-500 transition-colors text-xs uppercase tracking-widest font-['Manrope']"
-                            href="#">Privacy</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-zinc-100 font-bold mb-6 text-sm">Newsletter</h4>
-                <div class="flex gap-2">
-                    <input
-                        class="bg-zinc-900 border border-zinc-800 text-xs p-3 rounded-lg focus:ring-1 focus:ring-red-600 w-full outline-none"
-                        placeholder="YOUR EMAIL" type="email" />
-                    <button class="bg-zinc-800 p-3 rounded-lg hover:bg-zinc-700 transition-colors">
-                        <span class="material-symbols-outlined text-zinc-100 text-sm">send</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-zinc-900 text-center">
-            <p class="text-zinc-500 text-xs uppercase tracking-widest font-['Manrope']">© 2024 Odisha Bikes. Kinetic
-                Precision.</p>
-        </div>
-    </footer>
+    <!-- Footer injected by js/app.js -->
+    <div id="main-footer"></div>
     <!-- Single JS file for all pages -->
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>

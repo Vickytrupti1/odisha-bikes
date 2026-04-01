@@ -241,7 +241,105 @@ function goToDetail(bikeId) {
   window.location.href = 'detail-page.html?id=' + bikeId;
 }
 
+/* SHARED COMPONENTS — one navbar + one footer for all main pages.
+   Each main page has <div id="main-nav"> and <div id="main-footer">
+   placeholders. This function fills them. Login/signup pages are skipped. */
+function renderComponents() {
+  var navEl    = document.getElementById('main-nav');
+  var footerEl = document.getElementById('main-footer');
+  if (!navEl && !footerEl) return;
+
+  var page = window.location.pathname;
+  var onExplore = page.includes('listing') || page.includes('detail-page');
+  var exploreClass = onExplore
+    ? 'text-red-500 border-b-2 border-red-600 pb-1 font-medium transition-all'
+    : 'text-zinc-400 hover:text-zinc-100 transition-colors';
+
+  if (navEl) {
+    navEl.innerHTML = `
+    <nav class="fixed top-0 w-full z-50 bg-zinc-900/60 backdrop-blur-xl shadow-2xl shadow-black/40">
+        <div class="flex items-center justify-between px-8 py-4 max-w-screen-2xl mx-auto font-['Space_Grotesk'] tracking-tight">
+            <a href="index.html" class="text-2xl font-bold tracking-tighter text-zinc-100 uppercase hover:text-secondary transition-colors">Odisha Bikes</a>
+            <div class="hidden md:flex items-center gap-10">
+                <a class="${exploreClass}" href="listing.html">Explore Bikes</a>
+                <a class="text-zinc-400 hover:text-zinc-100 transition-colors" href="#">Compare</a>
+            </div>
+            <div class="flex items-center gap-6">
+                <div class="relative hidden lg:block">
+                    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500 text-sm">search</span>
+                    <input class="bg-zinc-800/50 border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-1 focus:ring-red-600 w-64 transition-all" placeholder="Search bikes..." type="text" />
+                </div>
+                <div id="nav-auth" class="flex items-center gap-3">
+                    <button id="nav-login-btn" onclick="window.location.href='login.html'" class="bg-secondary-container text-white px-6 py-2 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-red-700 transition-all active:scale-95">Login</button>
+                    <div id="nav-profile" class="hidden items-center gap-3 relative">
+                        <div id="nav-avatar" class="w-9 h-9 rounded-full bg-secondary-container flex items-center justify-center cursor-pointer select-none text-white font-bold text-sm uppercase" onclick="document.getElementById('nav-dropdown').classList.toggle('hidden')">?</div>
+                        <span id="nav-username" class="text-zinc-200 text-sm font-semibold hidden lg:block"></span>
+                        <div id="nav-dropdown" class="hidden absolute right-0 top-12 bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl py-2 w-44 z-50">
+                            <div id="nav-dropdown-name" class="px-4 py-2 text-xs text-zinc-400 border-b border-zinc-700 mb-1"></div>
+                            <button onclick="firebaseLogout()" class="w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-zinc-800 transition-colors flex items-center gap-2">
+                                <span class="material-symbols-outlined text-sm">logout</span> Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>`;
+  }
+
+  if (footerEl) {
+    footerEl.innerHTML = `
+    <footer class="bg-zinc-950 w-full py-16 px-8 border-t border-zinc-800/30">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div>
+                    <h4 class="text-lg font-black text-zinc-100 uppercase tracking-tighter mb-6">Odisha Bikes</h4>
+                    <p class="text-zinc-500 text-sm leading-relaxed">Redefining the bike discovery journey across Odisha. Engineering precision, editorial discovery.</p>
+                </div>
+                <div>
+                    <h5 class="font-['Manrope'] text-xs uppercase tracking-widest text-secondary font-bold mb-6">Explore</h5>
+                    <ul class="flex flex-col gap-4 text-xs font-['Manrope'] tracking-widest uppercase">
+                        <li><a class="text-zinc-500 hover:text-red-500 transition-colors" href="listing.html">Popular Bikes</a></li>
+                        <li><a class="text-zinc-500 hover:text-red-500 transition-colors" href="listing.html">Electric Hub</a></li>
+                        <li><a class="text-zinc-500 hover:text-red-500 transition-colors" href="#">Comparison Tool</a></li>
+                        <li><a class="text-zinc-500 hover:text-red-500 transition-colors" href="#">Dealer Locator</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-['Manrope'] text-xs uppercase tracking-widest text-secondary font-bold mb-6">Company</h5>
+                    <ul class="flex flex-col gap-4 text-xs font-['Manrope'] tracking-widest uppercase">
+                        <li><a class="text-zinc-500 hover:text-red-500 transition-colors" href="#">About Us</a></li>
+                        <li><a class="text-zinc-500 hover:text-red-500 transition-colors" href="#">Contact</a></li>
+                        <li><a class="text-zinc-500 hover:text-red-500 transition-colors" href="#">Terms of Service</a></li>
+                        <li><a class="text-zinc-500 hover:text-red-500 transition-colors" href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-['Manrope'] text-xs uppercase tracking-widest text-secondary font-bold mb-6">Newsletter</h5>
+                    <div class="flex bg-zinc-900 rounded-lg overflow-hidden border border-zinc-800">
+                        <input class="bg-transparent border-none text-xs px-4 w-full focus:ring-0" placeholder="Your email" type="email" />
+                        <button class="bg-zinc-800 px-4 py-2 border-l border-zinc-700">
+                            <span class="material-symbols-outlined text-sm text-zinc-100">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-zinc-900/50 gap-6">
+                <p class="font-['Manrope'] text-xs uppercase tracking-widest text-zinc-500">© 2024 Odisha Bikes. Kinetic Precision.</p>
+                <div class="flex gap-8">
+                    <span class="material-symbols-outlined text-zinc-500 hover:text-zinc-100 cursor-pointer text-lg">public</span>
+                    <span class="material-symbols-outlined text-zinc-500 hover:text-zinc-100 cursor-pointer text-lg">mail</span>
+                    <span class="material-symbols-outlined text-zinc-500 hover:text-zinc-100 cursor-pointer text-lg">share</span>
+                </div>
+            </div>
+        </div>
+    </footer>`;
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
+
+  renderComponents();
 
   /* DETAIL PAGE — populate from BIKES array using ?id= param */
   var detailName = document.getElementById('detail-name');
