@@ -291,7 +291,7 @@ function renderComponents() {
     footerEl.innerHTML = `
     <footer class="bg-zinc-950 w-full py-16 px-8 border-t border-zinc-800/30">
         <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
                 <div>
                     <h4 class="text-lg font-black text-zinc-100 uppercase tracking-tighter mb-6">Odisha Bikes</h4>
                     <p class="text-zinc-500 text-sm leading-relaxed">Redefining the bike discovery journey across Odisha. Engineering precision, editorial discovery.</p>
@@ -304,15 +304,6 @@ function renderComponents() {
                         <li><a class="text-zinc-500 hover:text-red-500 transition-colors" href="#">Comparison Tool</a></li>
                         <li><a class="text-zinc-500 hover:text-red-500 transition-colors" href="#">Dealer Locator</a></li>
                     </ul>
-                </div>
-                <div>
-                    <h5 class="font-['Manrope'] text-xs uppercase tracking-widest text-secondary font-bold mb-6">Newsletter</h5>
-                    <div class="flex bg-zinc-900 rounded-lg overflow-hidden border border-zinc-800">
-                        <input class="bg-transparent border-none text-xs px-4 w-full focus:ring-0" placeholder="Your email" type="email" />
-                        <button class="bg-zinc-800 px-4 py-2 border-l border-zinc-700">
-                            <span class="material-symbols-outlined text-sm text-zinc-100">arrow_forward</span>
-                        </button>
-                    </div>
                 </div>
             </div>
             <div class="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-zinc-900/50 gap-6">
