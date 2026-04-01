@@ -306,15 +306,6 @@ function renderComponents() {
                     </ul>
                 </div>
                 <div>
-                    <h5 class="font-['Manrope'] text-xs uppercase tracking-widest text-secondary font-bold mb-6">Company</h5>
-                    <ul class="flex flex-col gap-4 text-xs font-['Manrope'] tracking-widest uppercase">
-                        <li><a class="text-zinc-500 hover:text-red-500 transition-colors" href="#">About Us</a></li>
-                        <li><a class="text-zinc-500 hover:text-red-500 transition-colors" href="#">Contact</a></li>
-                        <li><a class="text-zinc-500 hover:text-red-500 transition-colors" href="#">Terms of Service</a></li>
-                        <li><a class="text-zinc-500 hover:text-red-500 transition-colors" href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-                <div>
                     <h5 class="font-['Manrope'] text-xs uppercase tracking-widest text-secondary font-bold mb-6">Newsletter</h5>
                     <div class="flex bg-zinc-900 rounded-lg overflow-hidden border border-zinc-800">
                         <input class="bg-transparent border-none text-xs px-4 w-full focus:ring-0" placeholder="Your email" type="email" />
@@ -325,7 +316,7 @@ function renderComponents() {
                 </div>
             </div>
             <div class="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-zinc-900/50 gap-6">
-                <p class="font-['Manrope'] text-xs uppercase tracking-widest text-zinc-500">© 2024 Odisha Bikes. Kinetic Precision.</p>
+                <p class="font-['Manrope'] text-xs uppercase tracking-widest text-zinc-500">© 2026 Odisha Bikes. Kinetic Precision.</p>
                 <div class="flex gap-8">
                     <span class="material-symbols-outlined text-zinc-500 hover:text-zinc-100 cursor-pointer text-lg">public</span>
                     <span class="material-symbols-outlined text-zinc-500 hover:text-zinc-100 cursor-pointer text-lg">mail</span>
